@@ -2,7 +2,7 @@ from django.db import models
 from django.forms import ModelForm
 from django.conf import settings
 
-from cache_utils.decorators import cached
+# from cache_utils.decorators import cached
 
 if not settings.DB_PREFIX:
     DB_PREFIX = ''
@@ -55,6 +55,7 @@ class patronform(ModelForm):
 
     class Meta:
         model = storychapter
+        fields = '__all__'
 
 
 class observatoryuser(models.Model):
@@ -247,7 +248,7 @@ class Sitc4_manager(models.Manager):
             lang = lang.replace("-", "_")
         return self.extra(select={"name": "name_"+lang})
 
-    @cached(settings.CACHE_VERY_LONG)
+    # @cached(settings.CACHE_VERY_LONG)
     def get_all(self, lang):
 
         products = self.filter_lang(lang)
@@ -377,7 +378,7 @@ class Hs4_manager(models.Manager):
             lang = lang.replace("-", "_")
         return self.extra(select={"name": "name_"+lang})
 
-    @cached(settings.CACHE_VERY_LONG)
+    # @cached(settings.CACHE_VERY_LONG)
     def get_all(self, lang):
         products = self.filter_lang(lang)
         # , ps_size__isnull=False)
@@ -465,7 +466,7 @@ class Sitc4_cpy(models.Model):
     opp_gain = models.FloatField(null=True)
 
     product_year = models.ForeignObject(
-        Sitc4_py, ('product', 'year'), ('product', 'year'))
+        Sitc4_py, ('product', 'year'), ('product', 'year'), ('product', 'year'))
 
     def __unicode__(self):
         return "CPY: %s.%s.%d" % (
@@ -491,7 +492,7 @@ class Hs4_cpy(models.Model):
     opp_gain = models.FloatField(null=True)
 
     product_year = models.ForeignObject(
-        Hs4_py, ('product', 'year'), ('product', 'year'))
+        Hs4_py, ('product', 'year'), ('product', 'year'), ('product', 'year'))
 
     def __unicode__(self):
         return "CPY: %s.%s.%d" % (

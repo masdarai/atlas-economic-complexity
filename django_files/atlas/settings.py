@@ -4,51 +4,53 @@
 # Need to create a settings_local.py file adjacent to this one with the
 # following variables:
 #
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': '[DATABASE NAME]',
-#         'USER': 'user_name',
-#         'PASSWORD': 'super_secret_pw',
-#         'HOST': '',
-#         'PORT': '',
-#     }
-# }
-#
-# STATICFILES_DIRS = (
-#   "/Users/[USERNAME]/Sites/env/observatory/media/",
-# )
-#
-# LOCALE_PATHS = (
-#   '/Users/[USERNAME]/Sites/env/observatory/django_files/locale',
-# )
-#
-# TEMPLATE_DIRS = (
-#   '/Users/[USERNAME]/Sites/env/observatory/html',
-# )
-#
-# STATIC_IMAGE_PATH = ''
-# STATIC_IMAGE = ''
-# YEAR_MAX_HS4 = 2013
-#
-# SECRET_KEY = 'my_pets_name_is_eloise'
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'atlas',
+         'USER': 'root',
+         'PASSWORD': 'masdar.ai',
+         'HOST': 'localhost',
+         'PORT': '3306',
+     }
+}
+
+STATICFILES_DIRS = (
+   "/Users/agung/Works/atlas/atlas-economic-complexity/media/",
+)
+
+LOCALE_PATHS = (
+   '/Users/agung/Works/atlas/atlas-economic-complexity/django_files/locale',
+)
+
+TEMPLATE_DIRS = (
+   '/Users/agung/Works/atlas/atlas-economic-complexity/html',
+)
+
+STATIC_IMAGE_PATH = ''
+STATIC_IMAGE = ''
+YEAR_MAX_HS4 = 2013
+YEAR_MIN_HS4 = 2018
+
+SECRET_KEY = 'my_pets_name_is_eloise'
 #
 # IF YOU ARE RUNNING THE SERVER LOCALLY (AND DO NOT WANT TO INSTALL REDIS):
 # Set the REDIS flag to false
 # Define a django dummy cache framework
 #
-# REDIS = False
-#
-# CACHES = {
-#    'default': {
-#        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
-#    },
-#}
-# HTTP_HOST = '/'
-# DB_PREFIX = ''
-#
+
+REDIS = False
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+    },
+}
+
+HTTP_HOST = '/'
+DB_PREFIX = ''
+
 # FOR VERBOSE JS OUTPUT
-# DEV = False
+DEV = True
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -103,13 +105,12 @@ INSTALLED_APPS = (
   'compressor'
 )
 
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379:0',
-    },
-}
-
+#CACHES = {
+#    'default': {
+#        'BACKEND': 'redis_cache.cache.RedisCache',
+#        'LOCATION': '127.0.0.1:6379:0',
+#    },
+#}
 VERSION = '1.0.8'
 
 CACHE_VERY_SHORT = 60*10  # 10 minutes
